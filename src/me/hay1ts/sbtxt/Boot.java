@@ -6,8 +6,10 @@ package me.hay1ts.sbtxt;
 public class Boot {
     public static IO io = new IO();
     public static Main m = new Main();
+    public static String ver = "α0.0.1";
     public static void main(String args[]) {
-        //TODO: Add init gate
-        m.show();
+        if (io.init()) {
+            m.show();
+        }
     }
 }

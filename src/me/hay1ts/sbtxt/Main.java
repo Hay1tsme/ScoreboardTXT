@@ -18,6 +18,11 @@ public class Main {
     private JLabel lblP1s;
     private JLabel lblP2s;
     private JLabel lblP2;
+    private JButton btnUpdate;
+    private JComboBox jcbC1;
+    private JLabel lblC1;
+    private JLabel lblC2;
+    private JComboBox jcbC2;
     public String[] players;
     public String[] casters;
 
@@ -25,7 +30,7 @@ public class Main {
      * Sets the properties of the main window and shows it
      */
     public void show() {
-        jfrMain = new JFrame();
+        jfrMain = new JFrame("ScoreboardTXT ver. " + Boot.ver);
         jfrMain.setContentPane(jpnMain);
         jfrMain.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         jfrMain.setBounds(Boot.io.x,Boot.io.y, Boot.io.width, Boot.io.height);
