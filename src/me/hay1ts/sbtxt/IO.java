@@ -2,8 +2,12 @@ package me.hay1ts.sbtxt;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import com.google.gson.stream.JsonReader;
+
+import javax.swing.*;
 import java.io.*;
+import java.nio.file.Files;
 
 /**
  * Handles all file IO, including loading the config
@@ -11,22 +15,19 @@ import java.io.*;
  */
 public class IO {
     public int width = 500;
-    public int height = 500;
+    public int height = 300;
     public int x = 300;
     public int y = 100;
 
-    private Gson g = new Gson();
-    private JsonReader cfgR;
+    private String cfgS;
 
     private File cfgF = new File("./cfg/sb.json");
-    private File p1 = new File("./txt/p1.txt");
-    private File p1s = new File("./txt/p1s.txt");
-    private File p2 = new File("./txt/p2.txt");
-    private File p2s = new File("./txt/p2s.txt");
-    private File c1 = new File("./txt/c1.txt");
-    private File c2 = new File("./txt/c2.txt");
-    private File players = new File("./txt/players.txt");
-    private File casters = new File("./txt/casters.txt");
+    public File p1 = new File("./txt/p1.txt");
+    public File p2 = new File("./txt/p2.txt");
+    public File c1 = new File("./txt/c1.txt");
+    public File c2 = new File("./txt/c2.txt");
+    public File players = new File("./txt/players.txt");
+    public File casters = new File("./txt/casters.txt");
 
     public IO() {
     }
@@ -39,8 +40,8 @@ public class IO {
         //TODO: Fix config file loading, it doesn't work right now but at least the rest of the files work
         System.out.println("Loading configuration file...");
         try {
-            cfgR = new JsonReader(new FileReader(cfgF));
-            JsonObject cfgJ = g.fromJson(cfgR, Object.class);
+            cfgS = new String(Files.readAllBytes(cfgF.toPath()));
+            JsonObject cfgJ = new JsonParser().parse(cfgS).getAsJsonObject();
             System.out.println("Successfully loaded configuration file, loading values...");
 
             x = cfgJ.get("x").getAsInt();
@@ -51,18 +52,21 @@ public class IO {
             System.out.println("Class Cast Error");
             f.printStackTrace();
         }
-        catch (FileNotFoundException e) {
+        catch (IOException e) {
             System.out.println("Failed to find config file, creating one with default values");
             try {
                  if (!cfgF.createNewFile()) {
                      System.out.println("Unable to create file, do you have proper permissions?");
+                     JOptionPane.showMessageDialog(null, "Unable to create file, do you have " +
+                             "proper permissions?");
                  }
                  else {
                      System.out.println("Writing to new config file");
                      BufferedWriter w = new BufferedWriter(new FileWriter(cfgF, true));
                      w.append("{\n" +
                              "  \"width\": 500,\n" +
-                             "  \"height\": 500,\n" +
+                             "  \"height\": 300,\n" +
+
                              "  \"x\": 500,\n" +
                              "  \"y\": 500\n" +
                              "}\n");
@@ -72,15 +76,15 @@ public class IO {
             } catch (IOException ex) {
                 System.out.println("Unable to create file, do you have proper permissions?");
                 ex.printStackTrace();
+                JOptionPane.showMessageDialog(null, "Unable to create file, do you have " +
+                        "proper permissions?");
                 System.exit(-1);
             }
             e.printStackTrace();
             System.exit(-1);
         }
         findFiles(p1);
-        findFiles(p1s);
         findFiles(p2);
-        findFiles(p2s);
         findFiles(c1);
         findFiles(c2);
         findFiles(players);
@@ -95,6 +99,8 @@ public class IO {
             try {
                 if (!f.createNewFile()) {
                     System.out.println("Failed to create " + f.getName() + " file, do you have permissions?");
+                    JOptionPane.showMessageDialog(null, "Failed to create " + f.getName() +
+                            " file, do you have permissions?");
                     System.exit(-1);
                 }
                 else {
@@ -110,18 +116,40 @@ public class IO {
     }
 
     /**
-     * Updates all text files
+     * Updates the requested text file by reading from it
+     * @param f Text file to read from
+     * @return Array of names on success, null on fail
      */
-    public void update() {
-        //TODO: Collect values from all fields, write to appropriate files
+    public String[] updateR(File f) {
+        System.out.println("Reading from file " + f.getName());
+        String[] fa;
+        try {
+            String fs = new String(Files.readAllBytes(f.toPath()));
+            fa = fs.split("\\r?\\n");
+            return fa;
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(null, "Error reading from " + f.getName());
+            e.printStackTrace();
+            return null;
+        }
     }
 
     /**
-     * Updates the requested text file
-     * @param f Text file to update
+     * Updates the requested text file by writing to it
+     * @param f Text file to write to
+     * @param s Text to write to file
+     * @return String on error, null on success
      */
-    public void update(File f) {
-        //TODO: File file, drop new value
+    public void updateW(File f, String s) {
+        System.out.println("Writing " + s + " to " + f.getName());
+        try {
+            BufferedWriter bw = new BufferedWriter(new FileWriter(f.toPath().toString()));
+            bw.write(s);
+            bw.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Error writing to " + f.getName());
+        }
     }
 
     /**
