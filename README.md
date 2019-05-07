@@ -1,5 +1,4 @@
 # ScoreboardTXT
-## Description
 ### An easy-to-use, text-based scoreboard for OBS
 OBS Text sources are clunky when constantly editing them to update names or scores for tournaments. ScoreboardTXT introcudes a simple GUI solution to this. It loads player and caster names from a text file, and outputs the ones you select, including their score, to seperate text files, one per player and one per caster.
 
