@@ -57,11 +57,6 @@
           <grid row="1" column="6" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
       </hspacer>
-      <vspacer id="7340c">
-        <constraints>
-          <grid row="5" column="3" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
-        </constraints>
-      </vspacer>
       <component id="b7745" class="javax.swing.JLabel" binding="lblP1">
         <constraints>
           <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
@@ -104,15 +99,6 @@
         </constraints>
         <properties/>
       </component>
-      <component id="31c18" class="javax.swing.JButton" binding="btnRefresh">
-        <constraints>
-          <grid row="6" column="2" row-span="1" col-span="3" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value="Refresh Lists"/>
-          <toolTipText value="Refresh the caster and player lists"/>
-        </properties>
-      </component>
       <vspacer id="d505c">
         <constraints>
           <grid row="8" column="3" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
@@ -148,11 +134,40 @@
       </component>
       <component id="67d3b" class="javax.swing.JButton" binding="btnPush">
         <constraints>
-          <grid row="7" column="2" row-span="1" col-span="3" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="7" column="2" row-span="1" col-span="3" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
+            <maximum-size width="270" height="-1"/>
+          </grid>
         </constraints>
         <properties>
           <text value="Force Push"/>
           <toolTipText value="Force push to text files"/>
+        </properties>
+      </component>
+      <component id="35a0a" class="javax.swing.JButton" binding="btnRefreshP">
+        <constraints>
+          <grid row="6" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
+            <maximum-size width="130" height="-1"/>
+          </grid>
+        </constraints>
+        <properties>
+          <text value="Refresh Players"/>
+          <toolTipText value="Refresh player list"/>
+        </properties>
+      </component>
+      <vspacer id="7340c">
+        <constraints>
+          <grid row="5" column="3" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </vspacer>
+      <component id="31c18" class="javax.swing.JButton" binding="btnRefreshC">
+        <constraints>
+          <grid row="6" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
+            <maximum-size width="130" height="-1"/>
+          </grid>
+        </constraints>
+        <properties>
+          <text value="Refresh Casters"/>
+          <toolTipText value="Refresh caster list"/>
         </properties>
       </component>
     </children>

@@ -1,33 +1,34 @@
 package me.hay1ts.sbtxt;
 
-import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import com.google.gson.stream.JsonReader;
 
 import javax.swing.*;
 import java.io.*;
 import java.nio.file.Files;
+
+//TODO: Allow the config file to be written to on resizing and moving the window
+//TODO: Make new fields for tournament name and current round
 
 /**
  * Handles all file IO, including loading the config
  * file and updating the text files
  */
 public class IO {
-    public int width = 500;
-    public int height = 300;
-    public int x = 300;
-    public int y = 100;
+    public static int width = 550;
+    public static int height = 300;
+    public static int x = 300;
+    public static int y = 100;
 
-    private String cfgS;
+    private static String cfgS;
 
-    private File cfgF = new File("./cfg/sb.json");
-    public File p1 = new File("./txt/p1.txt");
-    public File p2 = new File("./txt/p2.txt");
-    public File c1 = new File("./txt/c1.txt");
-    public File c2 = new File("./txt/c2.txt");
-    public File players = new File("./txt/players.txt");
-    public File casters = new File("./txt/casters.txt");
+    private static File cfgF = new File("./cfg/sb.json");
+    public static File p1 = new File("./txt/p1.txt");
+    public static File p2 = new File("./txt/p2.txt");
+    public static File c1 = new File("./txt/c1.txt");
+    public static File c2 = new File("./txt/c2.txt");
+    public static File players = new File("./txt/players.txt");
+    public static File casters = new File("./txt/casters.txt");
 
     public IO() {
     }
@@ -36,8 +37,7 @@ public class IO {
      * Initial file reading, checks for the presence of the config file as well as the other text files
      * @return true if init passed without issues, false if unrecoverable error
      */
-    public boolean init() {
-        //TODO: Fix config file loading, it doesn't work right now but at least the rest of the files work
+    public static boolean init() {
         System.out.println("Loading configuration file...");
         try {
             cfgS = new String(Files.readAllBytes(cfgF.toPath()));
@@ -64,7 +64,7 @@ public class IO {
                      System.out.println("Writing to new config file");
                      BufferedWriter w = new BufferedWriter(new FileWriter(cfgF, true));
                      w.append("{\n" +
-                             "  \"width\": 500,\n" +
+                             "  \"width\": 550,\n" +
                              "  \"height\": 300,\n" +
 
                              "  \"x\": 500,\n" +
@@ -92,7 +92,7 @@ public class IO {
         return true;
     }
 
-    private void findFiles (File f) {
+    private static void findFiles (File f) {
         System.out.println("Looking for file " + f.getName());
         if(!f.exists()) {
             System.out.println("No " + f.getName() + " file found, creating...");
@@ -120,7 +120,7 @@ public class IO {
      * @param f Text file to read from
      * @return Array of names on success, null on fail
      */
-    public String[] updateR(File f) {
+    public static String[] updateR(File f) {
         System.out.println("Reading from file " + f.getName());
         String[] fa;
         try {
@@ -140,7 +140,7 @@ public class IO {
      * @param s Text to write to file
      * @return String on error, null on success
      */
-    public void updateW(File f, String s) {
+    public static  void updateW(File f, String s) {
         System.out.println("Writing " + s + " to " + f.getName());
         try {
             BufferedWriter bw = new BufferedWriter(new FileWriter(f.toPath().toString()));
@@ -153,32 +153,13 @@ public class IO {
     }
 
     /**
-     * Loads the configuration file and sets the properties accordingly
-     * @param f configuration file to load
-     */
-    public void loadCfg(File f) {
-        //TODO: Load config file, set values
-    }
-
-    /**
      * Writes changes to the config file
      * @param f Config file
      * @param key key to be changed
      * @param val value to change the key to
      */
-    public void writeCfg(File f, String key, String val) {
+    public static void writeCfg(File f, String key, String val) {
         //TODO: Load config file, find the key, write the new value
-    }
 
-    /**
-     *
-     * @param f File to get text from
-     * @return The file contents in an array, separated by newline
-     */
-    public String[] reload(File f) {
-        //TODO: Read file, seperate by newline, add to array, return array
-        String[] cts = {};
-        return cts;
     }
-
 }
