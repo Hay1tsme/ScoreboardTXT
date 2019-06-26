@@ -29,6 +29,8 @@ public class IO {
     public static File c2 = new File("./txt/c2.txt");
     public static File players = new File("./txt/players.txt");
     public static File casters = new File("./txt/casters.txt");
+    public static File round = new File("./txt/round.txt");
+    public static File tourn = new File("./txt/tourn.txt");
 
     public IO() {
     }
@@ -64,7 +66,7 @@ public class IO {
                      System.out.println("Writing to new config file");
                      BufferedWriter w = new BufferedWriter(new FileWriter(cfgF, true));
                      w.append("{\n" +
-                             "  \"width\": 550,\n" +
+                             "  \"width\": 710,\n" +
                              "  \"height\": 300,\n" +
 
                              "  \"x\": 500,\n" +
@@ -89,6 +91,8 @@ public class IO {
         findFiles(c2);
         findFiles(players);
         findFiles(casters);
+        findFiles(round);
+        findFiles(tourn);
         return true;
     }
 

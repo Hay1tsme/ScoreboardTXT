@@ -1,6 +1,8 @@
 package me.hay1ts.sbtxt;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  * Handles all window operations including showing
@@ -23,10 +25,16 @@ public class Main {
     private JLabel lblP2;
     private JLabel lblC1;
     private JLabel lblC2;
+    private JLabel jlbRound;
+    private JLabel lblTourn;
 
     private JButton btnRefreshC;
     private JButton btnPush;
     private JButton btnRefreshP;
+    private JButton btnRound;
+
+    private JTextField jtfTourn;
+    private JTextField jtfRound;
 
     private String[] players;
     private String[] casters;
@@ -42,23 +50,35 @@ public class Main {
             IO.updateW(IO.p2, jcbP2.getSelectedItem() + " - " + jspP2s.getValue());
         });
         jcbP1.addActionListener(e -> {
-            if (jcbP1.getSelectedItem() != null) {
+            if (jcbP1.getSelectedItem() != null && jcbP1.getSelectedItem() != "") {
                 IO.updateW(IO.p1, jcbP1.getSelectedItem() + " - " + jspP1s.getValue());
+            }
+            else {
+                IO.updateW(IO.p1, "");
             }
         });
         jspP1s.addChangeListener(e -> {
-            if (jcbP1.getSelectedItem() != null) {
+            if (jcbP1.getSelectedItem() != null && jcbP1.getSelectedItem() != "") {
                 IO.updateW(IO.p1, jcbP1.getSelectedItem() + " - " + jspP1s.getValue());
+            }
+            else {
+                IO.updateW(IO.p1, "");
             }
         });
         jcbP2.addActionListener(e -> {
-            if (jcbP2.getSelectedItem() != null) {
+            if (jcbP2.getSelectedItem() != null && jcbP2.getSelectedItem() != "") {
                 IO.updateW(IO.p2, jcbP2.getSelectedItem() + " - " + jspP2s.getValue());
+            }
+            else {
+                IO.updateW(IO.p2, "");
             }
         });
         jspP2s.addChangeListener(e -> {
-            if (jcbP2.getSelectedItem() != null) {
+            if (jcbP2.getSelectedItem() != null && jcbP2.getSelectedItem() != "") {
                 IO.updateW(IO.p2, jcbP2.getSelectedItem() + " - " + jspP2s.getValue());
+            }
+            else {
+                IO.updateW(IO.p2, "");
             }
         });
         jcbC1.addActionListener(e -> {
@@ -71,8 +91,10 @@ public class Main {
                 IO.updateW(IO.c2, (String) jcbC2.getSelectedItem());
             }
         });
-        btnRefreshP.addActionListener(e -> {
-            updatePList();
+        btnRefreshP.addActionListener(e -> updatePList());
+        btnRound.addActionListener(e -> {
+            IO.updateW(IO.round, jtfRound.getText());
+            IO.updateW(IO.tourn, jtfTourn.getText());
         });
     }
 

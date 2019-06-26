@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="me.hay1ts.sbtxt.Main">
-  <grid id="27dc6" binding="jpnMain" layout-manager="GridLayoutManager" row-count="9" column-count="7" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+  <grid id="27dc6" binding="jpnMain" layout-manager="GridLayoutManager" row-count="11" column-count="7" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="0" left="0" bottom="0" right="0"/>
     <constraints>
-      <xy x="20" y="20" width="600" height="400"/>
+      <xy x="20" y="20" width="661" height="400"/>
     </constraints>
     <properties/>
     <border type="none"/>
@@ -42,11 +42,6 @@
         </constraints>
         <properties/>
       </component>
-      <hspacer id="4d40a">
-        <constraints>
-          <grid row="1" column="3" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-        </constraints>
-      </hspacer>
       <hspacer id="80236">
         <constraints>
           <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
@@ -101,7 +96,7 @@
       </component>
       <vspacer id="d505c">
         <constraints>
-          <grid row="8" column="3" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+          <grid row="10" column="3" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
         </constraints>
       </vspacer>
       <component id="60e44" class="javax.swing.JComboBox" binding="jcbC1">
@@ -132,20 +127,72 @@
         </constraints>
         <properties/>
       </component>
-      <component id="67d3b" class="javax.swing.JButton" binding="btnPush">
+      <vspacer id="7340c">
         <constraints>
-          <grid row="7" column="2" row-span="1" col-span="3" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
-            <maximum-size width="270" height="-1"/>
+          <grid row="7" column="3" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </vspacer>
+      <component id="31c18" class="javax.swing.JButton" binding="btnRefreshC">
+        <constraints>
+          <grid row="9" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
+            <maximum-size width="130" height="-1"/>
           </grid>
         </constraints>
         <properties>
-          <text value="Force Push"/>
-          <toolTipText value="Force push to text files"/>
+          <text value="Refresh Casters"/>
+          <toolTipText value="Refresh caster list"/>
+        </properties>
+      </component>
+      <component id="4bcdf" class="javax.swing.JTextField" binding="jtfTourn">
+        <constraints>
+          <grid row="4" column="2" row-span="1" col-span="3" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
+            <minimum-size width="200" height="-1"/>
+            <preferred-size width="200" height="-1"/>
+            <maximum-size width="300" height="-1"/>
+          </grid>
+        </constraints>
+        <properties/>
+      </component>
+      <component id="79921" class="javax.swing.JLabel" binding="jlbRound">
+        <constraints>
+          <grid row="5" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Current Round"/>
+        </properties>
+      </component>
+      <component id="a65b0" class="javax.swing.JLabel" binding="lblTourn">
+        <constraints>
+          <grid row="3" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Tournament Name"/>
+        </properties>
+      </component>
+      <component id="67865" class="javax.swing.JTextField" binding="jtfRound">
+        <constraints>
+          <grid row="6" column="2" row-span="1" col-span="3" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
+            <minimum-size width="200" height="-1"/>
+            <preferred-size width="200" height="-1"/>
+            <maximum-size width="300" height="-1"/>
+          </grid>
+        </constraints>
+        <properties/>
+      </component>
+      <component id="bccd7" class="javax.swing.JButton" binding="btnRound">
+        <constraints>
+          <grid row="8" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
+            <minimum-size width="130" height="-1"/>
+            <maximum-size width="130" height="-1"/>
+          </grid>
+        </constraints>
+        <properties>
+          <text value="&lt;html&gt;&lt;center&gt;Update Round/&lt;br&gt;Name&lt;/center&gt;&lt;/html&gt;"/>
         </properties>
       </component>
       <component id="35a0a" class="javax.swing.JButton" binding="btnRefreshP">
         <constraints>
-          <grid row="6" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
+          <grid row="8" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
             <maximum-size width="130" height="-1"/>
           </grid>
         </constraints>
@@ -154,20 +201,16 @@
           <toolTipText value="Refresh player list"/>
         </properties>
       </component>
-      <vspacer id="7340c">
+      <component id="67d3b" class="javax.swing.JButton" binding="btnPush">
         <constraints>
-          <grid row="5" column="3" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
-        </constraints>
-      </vspacer>
-      <component id="31c18" class="javax.swing.JButton" binding="btnRefreshC">
-        <constraints>
-          <grid row="6" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
-            <maximum-size width="130" height="-1"/>
+          <grid row="9" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
+            <minimum-size width="130" height="-1"/>
+            <maximum-size width="270" height="-1"/>
           </grid>
         </constraints>
         <properties>
-          <text value="Refresh Casters"/>
-          <toolTipText value="Refresh caster list"/>
+          <text value="Force Push"/>
+          <toolTipText value="Force push to text files"/>
         </properties>
       </component>
     </children>
